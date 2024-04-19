@@ -39,7 +39,7 @@ public class UserController {
         return ResponseEntity.ok().build();
     }
 
-    @GetMapping("/users/{username}")
+    @GetMapping("/{username}")
     public ResponseEntity<UserDTO> getRegisteredUserData(@PathVariable String username) {
         Optional<UserDTO> user = userService.getRegisteredUserData(username);
         return user
