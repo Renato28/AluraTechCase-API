@@ -42,7 +42,7 @@ public class User implements Serializable, UserDetails {
 
     private LocalDate dateCreation;
 
-    private User(RegisterUserDTO data) {
+    public User(RegisterUserDTO data) {
         this.name = data.name();
         this.username = data.username();
         this.email = data.email();
