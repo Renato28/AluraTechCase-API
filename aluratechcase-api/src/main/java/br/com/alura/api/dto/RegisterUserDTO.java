@@ -5,7 +5,7 @@ import jakarta.validation.constraints.NotBlank;
 
 import java.time.LocalDate;
 
-public record RegistrationUserDTO(
+public record RegisterUserDTO(
         @NotBlank String name,
         @NotBlank String username,
         @NotBlank String email,

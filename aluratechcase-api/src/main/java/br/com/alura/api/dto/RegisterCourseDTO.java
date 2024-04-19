@@ -4,7 +4,7 @@ import jakarta.validation.constraints.NotBlank;
 
 import java.time.LocalDate;
 
-public record RegistrationCourseDTO(
+public record RegisterCourseDTO(
         @NotBlank String name,
         @NotBlank String code,
         @NotBlank String instructor,

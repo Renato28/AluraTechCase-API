@@ -1,6 +1,6 @@
 package br.com.alura.api.model;
 
-import br.com.alura.api.dto.RegistrationUserDTO;
+import br.com.alura.api.dto.RegisterUserDTO;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -42,7 +42,7 @@ public class User implements Serializable, UserDetails {
 
     private LocalDate dateCreation;
 
-    private User(RegistrationUserDTO data) {
+    private User(RegisterUserDTO data) {
         this.name = data.name();
         this.username = data.username();
         this.email = data.email();

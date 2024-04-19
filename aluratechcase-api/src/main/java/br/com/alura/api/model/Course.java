@@ -1,6 +1,6 @@
 package br.com.alura.api.model;
 
-import br.com.alura.api.dto.RegistrationCourseDTO;
+import br.com.alura.api.dto.RegisterCourseDTO;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
@@ -36,7 +36,7 @@ public class Course implements Serializable {
     @Temporal(TemporalType.DATE)
     private LocalDate inactivationDate;
 
-    private Course(RegistrationCourseDTO data) {
+    public Course(RegisterCourseDTO data) {
         this.name = data.name();
         this.code = data.code();
         this.instructor = data.instructor();
@@ -44,6 +44,10 @@ public class Course implements Serializable {
         this.ativo = true;
         this.dateCreation = data.dateCreatiom();
         this.inactivationDate = data.inactivationDate();
+    }
+
+    public void disableCourse() {
+        this.ativo = false;
     }
 
     public Course() {
