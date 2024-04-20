@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -14,6 +15,5 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     UserDetails findByUsername(String username);
 
-    @Query("SELECT u.name, u.email, u.role FROM User u WHERE u.username = :username")
-    Optional<UserDTO> getRegisteredUserData(String username);
+    List<UserDTO> findByUsernameContains(String username);
 }

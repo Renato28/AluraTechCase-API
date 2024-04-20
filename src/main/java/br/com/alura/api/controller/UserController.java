@@ -11,7 +11,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
+import java.util.List;
 
 @RestController
 @RequestMapping("/users")
@@ -40,11 +40,13 @@ public class UserController {
     }
 
     @GetMapping("/{username}")
-    public ResponseEntity<UserDTO> getRegisteredUserData(@PathVariable String username) {
-        Optional<UserDTO> user = userService.getRegisteredUserData(username);
-        return user
-                .map(userDTO -> ResponseEntity.ok().body(userDTO))
-                .orElse(ResponseEntity.notFound().build());
+    public ResponseEntity<List<UserDTO>> listUserRegisteredBy(@PathVariable String username) {
+        List<UserDTO> user = userService.listUserRegisteredBy(username);
+        if (user.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        } else {
+            return ResponseEntity.ok().body(user);
+        }
     }
 
 }
