@@ -22,7 +22,6 @@ public class TokenService {
         try {
             var algorithm = Algorithm.HMAC256(secret);
             return JWT.create()
-                    .withIssuer("API AluraTechCase")
                     .withSubject(user.getUsername())
                     .withExpiresAt(expirationDate())
                     .sign(algorithm);
@@ -35,7 +34,6 @@ public class TokenService {
         try {
             var algorithm = Algorithm.HMAC256(secret);
             return JWT.require(algorithm)
-                    .withIssuer("AluraTechCase-API")
                     .build()
                     .verify(token)
                     .getSubject();
