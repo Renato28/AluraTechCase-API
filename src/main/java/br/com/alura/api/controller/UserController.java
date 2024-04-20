@@ -27,16 +27,21 @@ public class UserController {
     @Transactional
     public ResponseEntity<?> registerUser(@RequestBody @Valid RegisterUserDTO data) {
 
-        User user = new User();
+        try {
 
-        String ecriptedPassword = bCryptPasswordEncoder.encode(data.password());
+            String ecriptedPassword = bCryptPasswordEncoder.encode(data.getPassword());
 
-        user.setUsername(data.username());
-        user.setPassword(ecriptedPassword);
+            data.setUsername(data.getUsername());
+            data.setPassword(ecriptedPassword);
 
-        this.userService.registerUser(data);
+            this.userService.registerUser(data);
 
-        return ResponseEntity.ok().build();
+            return ResponseEntity.ok().body(data);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
 
     @GetMapping("/{username}")

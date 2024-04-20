@@ -39,25 +39,24 @@ public class User implements Serializable, UserDetails {
 
     private String password;
 
-    @Enumerated(EnumType.STRING)
-    private Role role;
+    private String role;
 
     private LocalDate dateCreation;
 
     public User(RegisterUserDTO data) {
-        this.name = data.name();
-        this.username = data.username();
-        this.email = data.email();
-        this.password = data.password();
-        this.role = data.role();
-        this.dateCreation = data.dateCreation();
+        this.name = data.getName();
+        this.username = data.getUsername();
+        this.email = data.getEmail();
+        this.password = data.getPassword();
+        this.role = data.getRole();
+        this.dateCreation = data.getDateCreation();
     }
 
     public User() {
 
     }
 
-    public User(Long id, String name, String username, String email, String password, Role role, LocalDate dateCreation) {
+    public User(Long id, String name, String username, String email, String password, String role, LocalDate dateCreation) {
         this.id = id;
         this.name = name;
         this.username = username;
@@ -99,11 +98,11 @@ public class User implements Serializable, UserDetails {
         this.password = password;
     }
 
-    public Role getRole() {
+    public String getRole() {
         return role;
     }
 
-    public void setRole(Role role) {
+    public void setRole(String role) {
         this.role = role;
     }
 
@@ -131,6 +130,19 @@ public class User implements Serializable, UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority("ROLE_USER"));
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", username='" + username + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", role='" + role + '\'' +
+                ", dateCreation=" + dateCreation +
+                '}';
     }
 
     @Override
