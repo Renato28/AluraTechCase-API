@@ -1,7 +1,7 @@
 create table courses(
 
     id bigint not null auto_increment,
-    name varchar(50) not null,
+    name varchar(50) not null unique,
     code varchar(10) not null,
     instructor varchar(50) not null,
     description varchar(100) not null,
