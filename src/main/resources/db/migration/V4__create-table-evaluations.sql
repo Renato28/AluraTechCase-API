@@ -4,7 +4,9 @@ create table evaluations(
     course_id bigint not null,
     user_id bigint not null,
     grade double not null,
-    reason varchar(100) not null,
+    comments varchar(100) not null,
+    reason_grade varchar(100) not null,
+    evaluation_date date not null,
 
     primary key(id)
     constraint fk_course foreign key (course_id) references courses(id)
