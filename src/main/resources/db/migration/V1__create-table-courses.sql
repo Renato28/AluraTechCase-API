@@ -6,7 +6,7 @@ create table courses(
     instructor varchar(50) not null,
     description varchar(100) not null,
     creation_date date not null,
-    inactivation_date date not null,
+    inactivation_date date,
 
     primary key(id)
 

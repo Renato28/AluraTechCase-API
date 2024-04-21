@@ -6,7 +6,7 @@ create table users(
     email varchar(50) not null unique,
     password varchar(100),
     role varchar(50) not null,
-    date_creation date not null,
+    creation_date date not null,
 
     primary key(id)
 
