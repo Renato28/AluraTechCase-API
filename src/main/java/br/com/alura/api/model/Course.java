@@ -4,10 +4,7 @@ import br.com.alura.api.dto.RegisterCourseDTO;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -15,6 +12,7 @@ import java.time.LocalDate;
 @Table(name = "courses")
 @Entity(name = "Course")
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
@@ -35,16 +33,18 @@ public class Course implements Serializable {
 
     private String description;
 
+    @Transient
     private Boolean ativo;
 
     @Temporal(TemporalType.DATE)
+    @Column(name = "creation_date")
     private LocalDate dateCreation;
 
     @Temporal(TemporalType.DATE)
+    @Column(name = "inactivation_date")
     private LocalDate inactivationDate;
 
     public Course(RegisterCourseDTO data) {
-        this.ativo = true;
         this.name = data.name();
         this.code = data.code();
         this.instructor = data.instructor();

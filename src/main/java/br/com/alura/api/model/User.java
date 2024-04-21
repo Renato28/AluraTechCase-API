@@ -46,8 +46,10 @@ public class User implements Serializable, UserDetails {
 
     private String password;
 
-    private String role;
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
+    @Column(name = "creation_date")
     private LocalDate dateCreation;
 
     public User(RegisterUserDTO data) {
@@ -61,7 +63,7 @@ public class User implements Serializable, UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority("ROLE_USER"), new SimpleGrantedAuthority("ROLE_ADMIN"));
+        return List.of(new SimpleGrantedAuthority("ROLE_USER"));
     }
 
     @Override

@@ -30,6 +30,7 @@ public class Registration implements Serializable {
     private Course course;
 
     @Temporal(TemporalType.DATE)
+    @Column(name = "registration_date")
     private LocalDate registrationDate;
 
 }
