@@ -3,6 +3,7 @@ create table evaluations(
     id bigint not null auto_increment,
     course_id bigint not null,
     user_id bigint not null,
+    email_instructor varchar(50) not null,
     grade double not null,
     comments varchar(100) not null,
     reason_grade varchar(100) not null,

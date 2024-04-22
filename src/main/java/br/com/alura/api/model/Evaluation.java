@@ -30,6 +30,10 @@ public class Evaluation implements Serializable {
     @NotBlank
     private String comments;
 
+    @NotBlank
+    @Column(name = "email_instructor")
+    private String emailInstructor;
+
     @Temporal(TemporalType.DATE)
     @NotNull
     @Column(name = "evaluation_date")
@@ -50,8 +54,7 @@ public class Evaluation implements Serializable {
         this.grade = data.grade();
         this.comments = data.comments();
         this.evaluationDate = data.evaluationDate();
-        this.course = data.course();
-        this.user = data.user();
+        this.emailInstructor = data.emailInstrutor();
         this.reasonGrade = data.reasonGrade();
     }
 }

@@ -24,6 +24,6 @@ public class EvaluationService {
         String subject = "Low Rating Received";
         String body = "A student gave the course a low rating. \n" +
                 "Reason: " + data.reasonGrade();
-        EmailSender.send(data.user().getEmail(), subject, body);
+        EmailSender.send(data.emailInstrutor(), subject, body);
     }
 }

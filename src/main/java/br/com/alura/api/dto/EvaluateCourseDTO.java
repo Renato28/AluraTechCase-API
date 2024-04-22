@@ -7,6 +7,6 @@ import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDate;
 
-public record EvaluateCourseDTO(@NotNull double grade, @NotBlank String comments, @NotNull LocalDate evaluationDate, User user, Course course, @NotBlank String reasonGrade) {
+public record EvaluateCourseDTO(@NotNull Long IdCourse, @NotNull Long idStudent, @NotBlank String emailInstrutor, double grade, @NotBlank String comments, @NotNull LocalDate evaluationDate, @NotBlank String reasonGrade) {
 
 }
