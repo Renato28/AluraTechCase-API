@@ -24,6 +24,7 @@ public class Student extends User implements Serializable {
 
     @Temporal(TemporalType.DATE)
     @NotNull
+    @Column(name = "birth_date")
     private LocalDate birthDate;
 
     @ManyToMany(mappedBy = "students")

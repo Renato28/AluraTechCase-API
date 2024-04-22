@@ -25,6 +25,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class User implements Serializable, UserDetails {
 
     @Id

@@ -1,9 +1,6 @@
 package br.com.alura.api.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 import org.hibernate.validator.constraints.br.CPF;
@@ -26,5 +23,6 @@ public class Instructor extends User implements Serializable {
 
     @Temporal(TemporalType.DATE)
     @NotNull
+    @Column(name = "birth_date")
     private LocalDate birthDate;
 }
