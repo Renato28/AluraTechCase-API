@@ -8,6 +8,9 @@ import lombok.*;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 @Table(name = "courses")
 @Entity(name = "Course")
@@ -24,12 +27,14 @@ public class Course implements Serializable {
 
     private String name;
 
-    @Size(max = 10, message = "O codigo deve ter no máximo 20 caracteres")
+    @Size(max = 10, message = "O codigo deve ter no máximo 10 caracteres")
     @Column(unique = true)
     @Pattern(regexp = "^[a-zA-Z]+(?:-[a-zA-Z]+)*$", message = "O código do curso deve ser textual, sem espaços, caracteres numéricos ou especiais, mais pode ser separados por hifens")
     private String code;
 
-    private String instructor;
+    @ManyToOne
+    @JoinColumn(name = "id_instructor")
+    private Instructor instructor;
 
     private String description;
 
@@ -43,6 +48,15 @@ public class Course implements Serializable {
     @Temporal(TemporalType.DATE)
     @Column(name = "inactivation_date")
     private LocalDate inactivationDate;
+
+    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
+    private List<Evaluation> evaluations = new ArrayList<>();
+
+    @ManyToMany
+    @JoinTable(name = "student_course",
+    joinColumns = @JoinColumn(name = "course_id"),
+    inverseJoinColumns = @JoinColumn(name = "student_id"))
+    private Set<Student> students;
 
     public Course(RegisterCourseDTO data) {
         this.name = data.name();

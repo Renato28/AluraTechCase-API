@@ -8,6 +8,6 @@ public record CourseDTO(Long id, String name, String code, String instructor, St
                         LocalDate dateCreation, LocalDate inactivationDate) {
 
     public CourseDTO(Course course) {
-        this(course.getId(), course.getName(), course.getCode(), course.getInstructor(), course.getDescription(), course.getDateCreation(), course.getInactivationDate());
+        this(course.getId(), course.getName(), course.getCode(), course.getInstructor().getName(), course.getDescription(), course.getDateCreation(), course.getInactivationDate());
     }
 }

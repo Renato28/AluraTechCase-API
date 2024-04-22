@@ -9,7 +9,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Set;
 
-@Entity(name = "Course")
+@Entity(name = "Student")
 @Table(name = "students")
 @Getter
 @Setter

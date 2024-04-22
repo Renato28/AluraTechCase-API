@@ -1,15 +1,17 @@
 package br.com.alura.api.dto;
 
+import br.com.alura.api.model.Instructor;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDate;
 
 public record RegisterCourseDTO(
         @NotBlank String name,
         @NotBlank String code,
-        @NotBlank String instructor,
+        @NotBlank Instructor instructor,
         @NotBlank String description,
-        @NotBlank LocalDate dateCreatiom,
-        @NotBlank LocalDate inactivationDate
+        @NotNull LocalDate dateCreation,
+        LocalDate inactivationDate
 ) {
 }

@@ -1,5 +1,6 @@
 package br.com.alura.api.dto;
 
+import br.com.alura.api.model.Role;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
@@ -11,7 +12,7 @@ public class RegisterUserDTO {
         @NotBlank String username;
         @NotBlank String email;
         @NotBlank String password;
-        @NotBlank String role;
+        @NotNull Role role;
         @NotNull LocalDate dateCreation;
 
         public String getName() {
@@ -46,11 +47,11 @@ public class RegisterUserDTO {
                 this.password = password;
         }
 
-        public String getRole() {
+        public Role getRole() {
                 return role;
         }
 
-        public void setRole(String role) {
+        public void setRole(Role role) {
                 this.role = role;
         }
 

@@ -33,4 +33,8 @@ public class Registration implements Serializable {
     @Column(name = "registration_date")
     private LocalDate registrationDate;
 
+    @ManyToOne
+    @JoinColumn(name = "student_id")
+    private Student student;
+
 }
